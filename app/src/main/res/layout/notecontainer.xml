@@ -10,7 +10,7 @@
     android:backgroundTint="#efefef"
     android:id="@+id/openNote">
 
-    <LinearLayout
+    <GridLayout
         android:layout_width="314dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -65,5 +65,5 @@
 
 
 
-    </LinearLayout>
+    </GridLayout>
 </androidx.cardview.widget.CardView>

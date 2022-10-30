@@ -17,18 +17,21 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
 
     private Context context;
     private ArrayList note_title, note_subtitle, note_typenote;
+    private OnClickListener onClickListener;
 
 
 
     NoteAdapter(Context context,
                 ArrayList note_title,
                 ArrayList note_subtitle,
-                ArrayList note_typenote
+                ArrayList note_typenote,
+                OnClickListener onClickListener
     ) {
         this.context = context;
         this.note_title = note_title;
         this.note_subtitle = note_subtitle;
         this.note_typenote = note_typenote;
+        this.onClickListener = onClickListener;
 
 
 
@@ -40,7 +43,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.notecontainer, parent, false);
-        return new MyViewHolder(view);
+        return new MyViewHolder(view, onClickListener);
     }
 
     @Override
@@ -66,17 +69,29 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
         return note_title.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView note_title, note_subtitle;
         CardView updateLayout;
+        OnClickListener onClickListener;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, OnClickListener onClickListener) {
             super(itemView);
             note_title = itemView.findViewById(R.id.note_title_txt);
             note_subtitle = itemView.findViewById(R.id.note_subtitle_txt);
             updateLayout = itemView.findViewById(R.id.openNote);
+            this.onClickListener = onClickListener;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            onClickListener.onClick(getAdapterPosition());
+        }
+    }
+    public interface OnClickListener
+    {
+        void onClick(int position);
     }
 
 }

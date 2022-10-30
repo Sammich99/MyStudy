@@ -8,12 +8,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CourseActivity extends AppCompatActivity {
+public class CourseActivity extends AppCompatActivity implements NoteAdapter.OnClickListener{
     ImageView newnote;
 
     RecyclerView recyclerView;
@@ -51,7 +52,7 @@ public class CourseActivity extends AppCompatActivity {
 
         storeDataInArrays();
 
-        noteAdapter = new NoteAdapter(this, inputNoteTitle, inputNoteSubTitle, inputNoteText);
+        noteAdapter = new NoteAdapter(this, inputNoteTitle, inputNoteSubTitle, inputNoteText, this);
         recyclerView.setAdapter(noteAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -69,6 +70,15 @@ public class CourseActivity extends AppCompatActivity {
 
             }
         }
+    }
+
+    @Override
+    public void onClick(int position) {
+        inputNoteTitle.get(position);
+        inputNoteSubTitle.get(position);
+        inputNoteText.get(position);
+        Intent intent = new Intent(this, UpdateNote.class);
+        startActivity(intent);
     }
 
 

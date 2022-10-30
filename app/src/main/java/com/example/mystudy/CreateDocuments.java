@@ -13,7 +13,7 @@ public class CreateDocuments extends AppCompatActivity {
     private EditText inputNoteTitle, inputNoteSubTitle,inputNoteText;
     Button savenote;
 
-    NoteDatabase noteDatabase;
+    NoteDatabase noteDB;
 
 
 
@@ -27,7 +27,7 @@ public class CreateDocuments extends AppCompatActivity {
         inputNoteText = findViewById(R.id.inputNoteText);
         savenote = findViewById(R.id.savenote);
 
-        noteDatabase = new NoteDatabase(this);
+        noteDB = new NoteDatabase(this);
 
         savenote.setOnClickListener(new View.OnClickListener() {
 
@@ -39,7 +39,7 @@ public class CreateDocuments extends AppCompatActivity {
                 String notesubtitleTxt = inputNoteSubTitle.getText().toString();
                 String notetypeTxt = inputNoteText.getText().toString();
 
-                Boolean checkaddNote = noteDatabase.addNote(notetileTxt, notesubtitleTxt, notetypeTxt);
+                Boolean checkaddNote = noteDB.addNote(notetileTxt, notesubtitleTxt, notetypeTxt);
                 if(checkaddNote == true) {
                     Toast.makeText(CreateDocuments.this, "Course Created", Toast.LENGTH_SHORT).show();
                 }

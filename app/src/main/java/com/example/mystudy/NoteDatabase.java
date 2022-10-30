@@ -23,12 +23,12 @@ public class NoteDatabase extends SQLiteOpenHelper {
     }
 
     public Boolean addNote(String inputNoteTitle, String inputNoteSubTitle, String inputNoteText){
-        SQLiteDatabase DB = this.getWritableDatabase();
+        SQLiteDatabase noteDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("inputNoteTitle", inputNoteTitle);
         contentValues.put("inputNoteSubTitle", inputNoteSubTitle);
         contentValues.put("inputNoteText", inputNoteText);
-        long result = DB.insert("Notedetails", null, contentValues);
+        long result = noteDB.insert("Notedetails", null, contentValues);
         if (result == -1) {
             return false;
         } else {
@@ -37,8 +37,10 @@ public class NoteDatabase extends SQLiteOpenHelper {
     }
 
     public Cursor readAllData() {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("Select * from Notedetails", null);
+        SQLiteDatabase noteDB = this.getReadableDatabase();
+        Cursor cursor = noteDB.rawQuery("Select * from Notedetails", null);
         return cursor;
     }
+
+
 }
