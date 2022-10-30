@@ -16,10 +16,10 @@ import java.util.ArrayList;
 public class CourseActivity extends AppCompatActivity {
     ImageView newnote;
 
-    RecyclerView noterecyclerView;
+    RecyclerView recyclerView;
 
     NoteDatabase noteDB;
-    ArrayList<String> note_title, note_subtitle;
+    ArrayList<String> inputNoteTitle, inputNoteSubTitle, inputNoteText;
     NoteAdapter noteAdapter;
 
 
@@ -30,7 +30,7 @@ public class CourseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
 
-        noterecyclerView = findViewById(R.id.noteRecyclerView);
+        recyclerView = findViewById(R.id.noteRecyclerView);
         newnote = (ImageView) findViewById(R.id.createNote);
 
 
@@ -43,32 +43,33 @@ public class CourseActivity extends AppCompatActivity {
             }
         });
 
-        noteDB =  new NoteDatabase(CourseActivity.this);
-        note_title = new ArrayList<>();
-        note_subtitle = new ArrayList<>();
+        noteDB =  new NoteDatabase(this);
+        inputNoteTitle = new ArrayList<>();
+        inputNoteSubTitle = new ArrayList<>();
+        inputNoteText = new ArrayList<>();
 
 
         storeDataInArrays();
 
-        noteAdapter = new NoteAdapter(CourseActivity.this, note_title, note_subtitle);
-        noterecyclerView.setAdapter(noteAdapter);
-        noterecyclerView.setLayoutManager(new LinearLayoutManager(CourseActivity.this));
+        noteAdapter = new NoteAdapter(this, inputNoteTitle, inputNoteSubTitle, inputNoteText);
+        recyclerView.setAdapter(noteAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     void storeDataInArrays() {
         Cursor cursor = noteDB.readAllData();
-        if(cursor.getCount() == 0) {
+        if(cursor == null || cursor.getCount() == 0) {
             Toast.makeText(this, "No data. ", Toast.LENGTH_SHORT).show();
         }else {
             while (cursor.moveToNext()) {
-                note_title.add(cursor.getString(0));
-                note_subtitle.add(cursor.getString(1));
+                inputNoteTitle.add(cursor.getString(0));
+                inputNoteSubTitle.add(cursor.getString(1));
+                inputNoteText.add(cursor.getString(2));
+
 
             }
         }
     }
-
-
 
 
 }

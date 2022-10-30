@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MyStudy"
         tools:targetApi="31">
         <activity
+            android:name=".UpdateNote"
+            android:exported="false" />
+        <activity
             android:name=".CreateDocuments"
             android:exported="false" />
         <activity

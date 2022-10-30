@@ -1,15 +1,19 @@
 package com.example.mystudy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class CreateDocuments extends AppCompatActivity {
     private EditText inputNoteTitle, inputNoteSubTitle,inputNoteText;
     Button savenote;
+
+    NoteDatabase noteDatabase;
 
 
 
@@ -23,13 +27,26 @@ public class CreateDocuments extends AppCompatActivity {
         inputNoteText = findViewById(R.id.inputNoteText);
         savenote = findViewById(R.id.savenote);
 
+        noteDatabase = new NoteDatabase(this);
+
         savenote.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                NoteDatabase noteDB = new NoteDatabase(CreateDocuments.this);
-                noteDB.addNote(inputNoteTitle.getText().toString().trim(),
-                        inputNoteSubTitle.getText().toString().trim(),
-                        inputNoteText.getText().toString().trim());
+                startActivity(new Intent(CreateDocuments.this, CourseActivity.class));
+
+                String notetileTxt = inputNoteTitle.getText().toString();
+                String notesubtitleTxt = inputNoteSubTitle.getText().toString();
+                String notetypeTxt = inputNoteText.getText().toString();
+
+                Boolean checkaddNote = noteDatabase.addNote(notetileTxt, notesubtitleTxt, notetypeTxt);
+                if(checkaddNote == true) {
+                    Toast.makeText(CreateDocuments.this, "Course Created", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(CreateDocuments.this, "You Haven't Created Any Course", Toast.LENGTH_SHORT).show();
+                }
+
             }
          });
       }
