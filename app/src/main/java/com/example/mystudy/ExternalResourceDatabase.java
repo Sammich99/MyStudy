@@ -9,8 +9,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-public class NoteDatabase extends SQLiteOpenHelper {
-    public NoteDatabase(Context context) {super(context, "Notedata.db", null , 1);}
+public class ExternalResourceDatabase extends SQLiteOpenHelper {
+    public ExternalResourceDatabase(Context context) {super(context, "Notedata.db", null , 1);}
 
     @Override
     public void onCreate(SQLiteDatabase noteDB) {
@@ -40,6 +40,22 @@ public class NoteDatabase extends SQLiteOpenHelper {
         SQLiteDatabase noteDB = this.getReadableDatabase();
         Cursor cursor = noteDB.rawQuery("Select * from Notedetails", null);
         return cursor;
+    }
+
+    public void updateNote(String updateNoteTitle, String updateNoteSubTitle, String updateNoteText){
+        SQLiteDatabase noteDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("updateNoteTitle", updateNoteTitle);
+        contentValues.put("updateNoteSubTitle", updateNoteSubTitle);
+        contentValues.put("updateNoteText", updateNoteText);
+        long result = noteDB.update("Notedetails", contentValues, "updateNoteTitle=?, updateNoteSubTitle=?, updateNoteText=?", new String[]{updateNoteTitle, updateNoteSubTitle, updateNoteText});
+        if(result == -1){
+
+        } else
+        {
+         
+        }
+
     }
 
 

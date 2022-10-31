@@ -14,32 +14,32 @@ public class AddCourse extends AppCompatActivity {
     EditText coursetitle, coursecode;
     ImageButton imageButton;
     Button buttonaddcourse;
-    DBHelper DB;
+    CoursesDatabase DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addcourse);
+        setContentView(R.layout.add_course);
 
         coursetitle = findViewById(R.id.coursetitle);
         coursecode = findViewById(R.id.coursecode);
         imageButton = findViewById(R.id.imageView);
         buttonaddcourse = (Button) findViewById(R.id.buttondone);
 
-        DB = new DBHelper(this);
+        DB = new CoursesDatabase(this);
 
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            startActivity(new Intent(AddCourse.this, Courses.class));
+            startActivity(new Intent(AddCourse.this, CourseList.class));
             }
         });
 
         buttonaddcourse.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AddCourse.this, Courses.class));
+                startActivity(new Intent(AddCourse.this, CourseList.class));
 
                 String coursetitleTxt = coursetitle.getText().toString();
                 String coursecodeTxt = coursecode.getText().toString();

@@ -6,8 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DBHelper extends SQLiteOpenHelper {
-    public DBHelper(Context context) {
+public class CoursesDatabase extends SQLiteOpenHelper {
+    public CoursesDatabase(Context context) {
         super(context, "Coursedata.db", null, 1);
     }
 

@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.MyViewHolder> {
     private Context context;
     private ArrayList coursetitle_id, coursecode_id;
     private OnClickListener onClickListener;
 
-    public MyAdapter(Context context, ArrayList coursetitle_id, ArrayList coursecode_id, OnClickListener onClickListener) {
+    public CoursesAdapter(Context context, ArrayList coursetitle_id, ArrayList coursecode_id, OnClickListener onClickListener) {
         this.context = context;
         this.coursetitle_id = coursetitle_id;
         this.coursecode_id = coursecode_id;
@@ -27,7 +27,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(context).inflate(R.layout.coursentry,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.course_entry_container,parent,false);
         return new MyViewHolder(view, onClickListener);
     }
 

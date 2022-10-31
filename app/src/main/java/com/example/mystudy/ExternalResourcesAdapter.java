@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> {
+public class ExternalResourcesAdapter extends RecyclerView.Adapter<ExternalResourcesAdapter.MyViewHolder> {
 
     private Context context;
     private ArrayList note_title, note_subtitle, note_typenote;
@@ -21,11 +21,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
 
 
 
-    NoteAdapter(Context context,
-                ArrayList note_title,
-                ArrayList note_subtitle,
-                ArrayList note_typenote,
-                OnClickListener onClickListener
+    ExternalResourcesAdapter(Context context,
+                             ArrayList note_title,
+                             ArrayList note_subtitle,
+                             ArrayList note_typenote,
+                             OnClickListener onClickListener
     ) {
         this.context = context;
         this.note_title = note_title;
@@ -42,7 +42,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.notecontainer, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.external_resources_container, parent, false);
         return new MyViewHolder(view, onClickListener);
     }
 
@@ -54,7 +54,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
         holder.updateLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, UpdateNote.class);
+                Intent intent = new Intent(context, UpdateExternalResources.class);
                 intent.putExtra("title", note_title.get(holder.getAdapterPosition()).toString());
                 intent.putExtra("subtitle", note_subtitle.get(holder.getAdapterPosition()).toString());
                 intent.putExtra("typenote", note_typenote.get(holder.getAdapterPosition()).toString());

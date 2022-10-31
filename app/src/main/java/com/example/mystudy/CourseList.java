@@ -20,11 +20,11 @@ import java.util.ArrayList;
 
 
 
-public class Courses extends AppCompatActivity implements MyAdapter.OnClickListener {
+public class CourseList extends AppCompatActivity implements CoursesAdapter.OnClickListener {
     RecyclerView recyclerView;
     ArrayList<String> coursetitle, coursecode;
-    DBHelper DB;
-    MyAdapter adapter;
+    CoursesDatabase DB;
+    CoursesAdapter adapter;
     BottomNavigationView bottomNavigationView;
     Button  addacoursebutton;
 
@@ -34,15 +34,15 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_courselist);
+        setContentView(R.layout.course_list);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.courses);
-        DB = new DBHelper(this);
+        DB = new CoursesDatabase(this);
         coursetitle = new ArrayList<>();
         coursecode = new ArrayList<>();
         recyclerView =  findViewById(R.id.courselistrecyclerview);
-        adapter = new MyAdapter(this, coursetitle, coursecode, this);
+        adapter = new CoursesAdapter(this, coursetitle, coursecode, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         displaydata();
@@ -51,8 +51,8 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnClickListe
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(), CourseActivity.class));
+                    case R.id.task:
+                        startActivity(new Intent(getApplicationContext(), TaskActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.home:

@@ -4,24 +4,25 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CourseActivity extends AppCompatActivity implements NoteAdapter.OnClickListener{
+public class CourseActivity extends AppCompatActivity implements ExternalResourcesAdapter.OnClickListener{
     ImageView newnote;
+    ImageButton imageView;
 
     RecyclerView recyclerView;
 
-    NoteDatabase noteDB;
+    ExternalResourceDatabase noteDB;
     ArrayList<String> inputNoteTitle, inputNoteSubTitle, inputNoteText;
-    NoteAdapter noteAdapter;
+    ExternalResourcesAdapter externalResourcesAdapter;
 
 
 
@@ -29,22 +30,31 @@ public class CourseActivity extends AppCompatActivity implements NoteAdapter.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course);
+        setContentView(R.layout.course_activity);
 
         recyclerView = findViewById(R.id.noteRecyclerView);
         newnote = (ImageView) findViewById(R.id.createNote);
+        imageView = findViewById(R.id.imageView);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CourseActivity.this, CourseList.class);
+                startActivity(intent);
+            }
+        });
 
 
 
         newnote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(CourseActivity.this, CreateDocuments.class);
+                Intent intent =  new Intent(CourseActivity.this, CreateExternalResources.class);
                 startActivity(intent);
             }
         });
 
-        noteDB =  new NoteDatabase(this);
+        noteDB =  new ExternalResourceDatabase(this);
         inputNoteTitle = new ArrayList<>();
         inputNoteSubTitle = new ArrayList<>();
         inputNoteText = new ArrayList<>();
@@ -52,8 +62,8 @@ public class CourseActivity extends AppCompatActivity implements NoteAdapter.OnC
 
         storeDataInArrays();
 
-        noteAdapter = new NoteAdapter(this, inputNoteTitle, inputNoteSubTitle, inputNoteText, this);
-        recyclerView.setAdapter(noteAdapter);
+        externalResourcesAdapter = new ExternalResourcesAdapter(this, inputNoteTitle, inputNoteSubTitle, inputNoteText, this);
+        recyclerView.setAdapter(externalResourcesAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
@@ -77,7 +87,7 @@ public class CourseActivity extends AppCompatActivity implements NoteAdapter.OnC
         inputNoteTitle.get(position);
         inputNoteSubTitle.get(position);
         inputNoteText.get(position);
-        Intent intent = new Intent(this, UpdateNote.class);
+        Intent intent = new Intent(this, UpdateExternalResources.class);
         startActivity(intent);
     }
 

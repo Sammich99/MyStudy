@@ -33,14 +33,14 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     EditText searchField;
     ProgressBar progressBar;
-    ApiInterface apiInterface;
+    GoogleResource_Custom_SerpApiInterface googleResourceCustomSerpApiInterface;
 
     BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.search_list);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -58,20 +58,20 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        apiInterface = retrofit.create(ApiInterface.class);
+        googleResourceCustomSerpApiInterface = retrofit.create(GoogleResource_Custom_SerpApiInterface.class);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener(){
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(),CourseActivity.class));
+                    case R.id.task:
+                        startActivity(new Intent(getApplicationContext(),TaskActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.home:
                         return true;
                     case R.id.courses:
-                        startActivity(new Intent(getApplicationContext(), Courses.class));
+                        startActivity(new Intent(getApplicationContext(), CourseList.class));
                         overridePendingTransition(0,0);
                         return true;
                 }
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getSearches(String txt){
-        Call<Search> call = apiInterface.fetchSearches(txt);
+        Call<Search> call = googleResourceCustomSerpApiInterface.fetchSearches(txt);
         call.enqueue(new Callback<Search>() {
             @Override
             public void onResponse(Call<Search> call, Response<Search> response) {
