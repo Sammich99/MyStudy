@@ -42,13 +42,13 @@ public class ExternalResourceDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public void updateNote(String updateNoteTitle, String updateNoteSubTitle, String updateNoteText){
+    public void updateNote(String noteupdated,  String updateNoteTitle, String updateNoteSubTitle, String updateNoteText){
         SQLiteDatabase noteDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("updateNoteTitle", updateNoteTitle);
         contentValues.put("updateNoteSubTitle", updateNoteSubTitle);
         contentValues.put("updateNoteText", updateNoteText);
-        long result = noteDB.update("Notedetails", contentValues, "updateNoteTitle=?, updateNoteSubTitle=?, updateNoteText=?", new String[]{updateNoteTitle, updateNoteSubTitle, updateNoteText});
+        long result = noteDB.update("Notedetails", contentValues, "updateNoteTitle=?", new String[]{noteupdated});
         if(result == -1){
 
         } else

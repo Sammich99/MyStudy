@@ -16,7 +16,7 @@ public class UpdateExternalResources extends AppCompatActivity {
     Button updatedone;
     ImageView imageView;
 
-    String title, subtitle, typenote;
+    String title, subtitle, typenote, noteupdated;
     ExternalResourceDatabase noteDB;
 
     @Override
@@ -50,7 +50,7 @@ public class UpdateExternalResources extends AppCompatActivity {
                 title = updateNoteTitle.getText().toString().trim();
                 subtitle = updateNoteSubTitle.getText().toString().trim();
                 typenote = updateNoteText.getText().toString().trim();
-                noteDB.updateNote(title, subtitle, typenote);
+                noteDB.updateNote(title, subtitle, typenote, noteupdated);
 
 
 
