@@ -27,9 +27,9 @@ public class UpdateExternalResources extends AppCompatActivity {
         updateNoteTitle =  findViewById(R.id.updateNoteTitle);
         updateNoteSubTitle = findViewById(R.id.updateNoteSubTitle);
         updateNoteText =  findViewById(R.id.updateNoteText);
-        inputNoteTitle = findViewById(R.id.inputNoteTitle);
-        inputNoteSubTitle = findViewById(R.id.inputNoteSubTitle);
-        inputNoteText = findViewById(R.id.inputNoteText);
+        inputNoteTitle = findViewById(R.id.updateNoteTitle);
+        inputNoteSubTitle = findViewById(R.id.updateNoteSubTitle);
+        inputNoteText = findViewById(R.id.updateNoteText);
         imageView = findViewById(R.id.imageView);
         noteDB = new ExternalResourceDatabase(this);
 

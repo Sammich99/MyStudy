@@ -8,6 +8,8 @@
     <string name="swe_6653_n_software_architecture" />
     <string name="add_a_course" />
     <string name="type_note_here" />
+    <string name="channel_name">Task Reminders</string>
+    <string name="channel_description">Notification for task reminder has been set</string>
     <item name="addcourse" type="id" />
     <item name="button2" type="id" />
     <item name="NoteSubTextTitle" type="id" />

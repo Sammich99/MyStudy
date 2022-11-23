@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/layout_task"
     android:layout_height="match_parent">
 
     <ImageButton
@@ -33,7 +34,7 @@
         android:layout_width="284dp"
         android:layout_height="54dp"
         android:layout_marginTop="104dp"
-        android:text="This Would Display The Name Of The Course You Picked"
+        android:text="Tasks"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="normal|bold"
