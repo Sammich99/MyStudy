@@ -33,7 +33,7 @@ public class TaskActivity extends AppCompatActivity {
     ImageView newtask;
     TaskAdapter taskAdapter;
     RecyclerView recyclerView;
-    List<TaskModel> taskList;
+    List<TaskModel> taskList = new ArrayList<>();
 
     TaskDatabase taskDatabase;
 
@@ -45,6 +45,8 @@ public class TaskActivity extends AppCompatActivity {
         newtask = findViewById(R.id.createTask);
         recyclerView = (RecyclerView) findViewById(R.id.taskRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        taskDatabase = new TaskDatabase(this);
 
         fetchdata();
 

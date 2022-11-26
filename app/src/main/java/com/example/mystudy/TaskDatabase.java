@@ -24,7 +24,7 @@ public class TaskDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase taskdb) {
-        taskdb.execSQL("create table table_taskreminder(title text primary key, title description, date text, time text)");
+        taskdb.execSQL("create table table_taskreminder(title text primary key, description text, date text, time text)");
 
     }
 
