@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CreateExternalResources extends AppCompatActivity {
     private EditText inputNoteTitle, inputNoteSubTitle,inputNoteText;
-    Button savenote;
+    ImageButton savenote;
     ImageButton imageButton;
 
     ExternalResourceDatabase noteDB;

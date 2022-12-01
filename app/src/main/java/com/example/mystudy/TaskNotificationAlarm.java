@@ -19,7 +19,6 @@ public class TaskNotificationAlarm extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Bundle bundle = intent.getExtras();
         String text =  bundle.getString("event");
-        String description =  bundle.getString("event description");
         String date = bundle.getString("date") + "" + bundle.getString("time");
 
 
