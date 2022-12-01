@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
 
     <application
@@ -22,7 +22,7 @@
             android:exported="false" />
         <activity
             android:name=".CreateTask"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".CreateAccount"
             android:exported="true" >
@@ -54,6 +54,8 @@
             android:name=".MainActivity"
             android:exported="true">
         </activity>
+
+        <receiver android:name=".TaskNotificationAlarm"/>
     </application>
 
 </manifest>

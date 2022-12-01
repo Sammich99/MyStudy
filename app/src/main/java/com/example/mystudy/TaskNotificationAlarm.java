@@ -27,12 +27,12 @@ public class TaskNotificationAlarm extends BroadcastReceiver {
         intent1.putExtra("message", text);
 
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent1, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent1, PendingIntent.FLAG_IMMUTABLE);
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "notify_001");
 
                 RemoteViews contentView =  new RemoteViews(context.getPackageName(), R.layout.activity_notification);
-                PendingIntent pendingSwitchIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+                PendingIntent pendingSwitchIntent = PendingIntent.getBroadcast(context.getApplicationContext(),  0, intent,  PendingIntent.FLAG_IMMUTABLE);
                 contentView.setOnClickPendingIntent(R.id.flashButton, pendingSwitchIntent);
                 contentView.setTextViewText(R.id.message, text);
                 contentView.setTextViewText(R.id.date, date);
