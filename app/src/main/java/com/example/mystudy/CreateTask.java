@@ -43,8 +43,8 @@ public class CreateTask extends AppCompatActivity {
 
         task_title = findViewById(R.id.inputTaskTitle);
         task_description = findViewById(R.id.inputTaskDescription);
-        task_date = findViewById(R.id.date_icon);
-        task_time = findViewById(R.id.time_icon);
+        task_date = findViewById(R.id.date_text);
+        task_time = findViewById(R.id.time_text);
 
         task_date.setOnClickListener(new View.OnClickListener() {
             @Override
