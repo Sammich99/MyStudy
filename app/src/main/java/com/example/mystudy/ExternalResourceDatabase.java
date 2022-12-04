@@ -48,13 +48,8 @@ public class ExternalResourceDatabase extends SQLiteOpenHelper {
         contentValues.put("updateNoteTitle", updateNoteTitle);
         contentValues.put("updateNoteSubTitle", updateNoteSubTitle);
         contentValues.put("updateNoteText", updateNoteText);
-        long result = noteDB.update("Notedetails", contentValues, "updateNoteTitle=?", new String[]{noteupdated});
-        if(result == -1){
+        noteDB.update("Notedetails", contentValues, "updateNoteTitle=?", new String[]{noteupdated});
 
-        } else
-        {
-         
-        }
 
     }
 

@@ -7,7 +7,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
     tools:context=".CourseList">
 
-    <Button
+    <TextView
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,13 +15,14 @@ android:layout_height="match_parent"
         android:background="@color/background"
         android:text="Manage"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textColor="@color/blue_200"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.939"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:cornerRadius="500dp"/>
 
     <TextView
         android:id="@+id/textView"
@@ -50,6 +51,7 @@ android:layout_height="match_parent"
         app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
     <Button
         android:id="@+id/addacoursebutton"
         android:layout_width="wrap_content"
@@ -59,9 +61,10 @@ android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:cornerRadius = "20dp"/>
 
-        /androidx.recyclerview.widget.RecyclerView>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

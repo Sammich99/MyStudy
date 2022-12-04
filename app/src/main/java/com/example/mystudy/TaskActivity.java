@@ -2,6 +2,7 @@ package com.example.mystudy;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,10 +31,12 @@ import java.util.List;
 
 public class TaskActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    ImageView newtask;
+    ImageView newtask, btnDelete;
     TaskAdapter taskAdapter;
     RecyclerView recyclerView;
     List<TaskModel> taskList = new ArrayList<>();
+
+    CoordinatorLayout coordinatorLayout;
 
     TaskDatabase taskDatabase;
 
@@ -43,6 +46,7 @@ public class TaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_activity);
         newtask = findViewById(R.id.createTask);
+        btnDelete = findViewById(R.id.btnDelete);
         recyclerView = (RecyclerView) findViewById(R.id.taskRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
@@ -83,6 +87,9 @@ public class TaskActivity extends AppCompatActivity {
         taskAdapter = new TaskAdapter(this, TaskActivity.this, taskList);
         recyclerView.setAdapter(taskAdapter);
 
+        ItemTouchHelper helper = new ItemTouchHelper(callback);
+        helper.attachToRecyclerView(recyclerView);
+
 
     }
 
@@ -103,7 +110,62 @@ public class TaskActivity extends AppCompatActivity {
             }
         }
     }
-}
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.btnDelete){
+            deleteAllTasks();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void deleteAllTasks() {
+        TaskDatabase taskDatabase =  new TaskDatabase(TaskActivity.this);
+        taskDatabase.deleteAllTasks();
+        recreate();
+    }
+
+    ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+            int position = viewHolder.getAdapterPosition();
+            TaskModel item = taskAdapter.getTaskList().get(position);
+
+            taskAdapter.removeItem(viewHolder.getAdapterPosition());
+
+            Snackbar snackbar = Snackbar.make(coordinatorLayout, "Item Deleted", Snackbar.LENGTH_LONG)
+                    .setAction("UNDO", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            taskAdapter.restoreItem(item, position);
+                            recyclerView.scrollToPosition(position);
+                        }
+                    }).addCallback(new BaseTransientBottomBar.BaseCallback<Snackbar>() {
+                        @Override
+                        public void onDismissed(Snackbar transientBottomBar, int event) {
+                            super.onDismissed(transientBottomBar, event);
+
+                            if (!(event == DISMISS_EVENT_ACTION)) {
+                                TaskDatabase taskdb = new TaskDatabase(TaskActivity.this);
+                                taskdb.deleteSingleTask(item.getRecycler_title());
+                            }
+                        }
+                    });
+            snackbar.setActionTextColor(Color.YELLOW);
+            snackbar.show();
+
+            }
+
+        };
+    }
+
 
 
 

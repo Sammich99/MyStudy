@@ -65,4 +65,20 @@ public class TaskDatabase extends SQLiteOpenHelper {
         return cursor;
 
     }
+
+    public void deleteAllTasks() {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        String query = String.valueOf(DB.rawQuery("DELETE FROM table_taskreminder", null));
+        DB.execSQL(query);
+    }
+
+    public void deleteSingleTask(String recycler_title) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        long result = DB.delete("table_taskreminder", "title_tasklist=?", new String[]{recycler_title});
+        if(result == -1) {
+
+        }else {
+
+        }
+    }
 }

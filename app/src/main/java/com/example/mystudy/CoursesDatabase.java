@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class CoursesDatabase extends SQLiteOpenHelper {
     public CoursesDatabase(Context context) {
@@ -43,5 +44,4 @@ public class CoursesDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
-
-    }
+}

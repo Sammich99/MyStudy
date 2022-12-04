@@ -78,6 +78,8 @@ public class CourseList extends AppCompatActivity implements CoursesAdapter.OnCl
 
 
 
+
+
     }
 
 
