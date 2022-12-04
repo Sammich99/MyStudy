@@ -17,7 +17,7 @@ public class Splashscreen extends AppCompatActivity {
 
     Animation topanim, bottomanim;
     ImageView logoimage;
-    TextView logoslogan;
+    TextView logoslogan, logoslogan1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +28,12 @@ public class Splashscreen extends AppCompatActivity {
         topanim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottomanim =  AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
 
-        logoimage = findViewById(R.id.logoimage);
-        logoslogan = findViewById(R.id.logoslogan);
 
-        logoimage.setAnimation(topanim);
-        logoslogan.setAnimation(bottomanim);
+        logoslogan = findViewById(R.id.logoslogan);
+        logoslogan1 = findViewById(R.id.logoslogan1);
+
+        logoslogan.setAnimation(topanim);
+        logoslogan1.setAnimation(bottomanim);
 
         new Handler().postDelayed(new Runnable() {
             @Override
