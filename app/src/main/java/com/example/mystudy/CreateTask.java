@@ -31,7 +31,7 @@ public class CreateTask extends AppCompatActivity {
 
     EditText task_title, task_description;
     EditText task_date, task_time;
-    Button add_taskreminder;
+    TextView add_taskreminder;
     String timeTonotify;
 
     @Override
@@ -72,7 +72,7 @@ public class CreateTask extends AppCompatActivity {
 
 
                 if (title.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please Enter Tak Title", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "You didn't create any task", Toast.LENGTH_SHORT).show();
                 } else {
                     if (time.equals("time") || date.equals("date")) {
                         Toast.makeText(getApplicationContext(), "Please select date and time", Toast.LENGTH_SHORT).show();

@@ -6,13 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AddCourse extends AppCompatActivity {
     EditText coursetitle, coursecode;
-    ImageButton imageButton;
+    TextView backbutton;
     Button buttonaddcourse;
     CoursesDatabase DB;
 
@@ -23,13 +24,13 @@ public class AddCourse extends AppCompatActivity {
 
         coursetitle = findViewById(R.id.coursetitle);
         coursecode = findViewById(R.id.coursecode);
-        imageButton = findViewById(R.id.imageView);
+        backbutton = findViewById(R.id.backbutton);
         buttonaddcourse = (Button) findViewById(R.id.buttondone);
 
         DB = new CoursesDatabase(this);
 
 
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             startActivity(new Intent(AddCourse.this, CourseList.class));

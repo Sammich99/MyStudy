@@ -187,8 +187,8 @@
         android:layout_gravity="bottom"
         android:id="@+id/bottom_navigation"
         app:itemBackground="@color/blue_200"
-        app:itemTextColor="@drawable/selector"
-        app:itemIconTint="@drawable/selector"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         app:menu="@menu/menu"
         android:layout_alignParentBottom="true"/>
 

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -20,26 +21,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038" />
 
-    <ImageButton
-        android:id="@+id/imageView"
+    <TextView
+        android:id="@+id/backbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="368dp"
-        android:layout_marginBottom="676dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="36dp"
+        android:text="BACK"
+        android:textColor="@color/blue_200"
+        android:textSize="12dp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
-
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/coursetitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="360dp"
+        android:layout_height="52dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="620dp"
+        android:layout_marginBottom="604dp"
         android:drawableLeft="@drawable/ic_baseline_library_books_24"
-        android:hint="  Course Title:Ex: Software Architecture"
+        android:drawableTint="@color/gray_300"
+        android:backgroundTint="@color/blue_200"
+        android:hint="  Course Title: Software Engineering"
         android:textAlignment="viewStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -47,35 +52,33 @@
 
     <EditText
         android:id="@+id/coursecode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="360dp"
+        android:layout_height="52dp"
         android:layout_below="@id/coursetitle"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="548dp"
+        android:layout_marginBottom="540dp"
+        android:backgroundTint="@color/blue_200"
+        android:drawableTint="@color/gray_300"
         android:drawableLeft="@drawable/ic_baseline_library_books_24"
-        android:hint="  Course Code:Ex: SWE 6623"
+        android:hint="  Course Code: SWE 6623"
         android:inputType="text"
         android:textAlignment="viewStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <Button
         android:id="@+id/buttondone"
-        android:layout_width="359dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="136dp"
-        android:text="Done"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="528dp"
+        android:textSize="20dp"
+        android:text="DONE"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -84,8 +87,8 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         app:itemBackground="@color/blue_200"
-        app:itemIconTint="@drawable/selector"
-        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"

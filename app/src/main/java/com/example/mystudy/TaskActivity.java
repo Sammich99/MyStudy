@@ -98,7 +98,7 @@ public class TaskActivity extends AppCompatActivity {
         Cursor cursor = taskDatabase.readAllData();
 
         if(cursor == null || cursor.getCount() == 0){
-            Toast.makeText(this, "No data. ", Toast.LENGTH_SHORT).show();
+
         } else
         {
             while (cursor.moveToNext()) {
