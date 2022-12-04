@@ -38,7 +38,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/emailaddress"
+                android:id="@+id/loginemailaddress"
                 android:drawablePadding="8dp"
                 android:hint="email address"
                 android:padding="8dp"
@@ -49,8 +49,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/password"
-
+                android:id="@+id/loginpassword"
                 android:drawablePadding="8dp"
                 android:hint="Password"
                 android:padding="8dp"
