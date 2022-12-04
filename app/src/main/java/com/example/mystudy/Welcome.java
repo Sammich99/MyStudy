@@ -16,9 +16,9 @@ import android.widget.TextView;
 public class Welcome extends AppCompatActivity {
 
 
-    Animation topanim, bottomanim;
+    Animation topanimwelcome, bottomanimwelcome;
     ImageView logoimage2;
-    TextView logoslogan2, logoslogan3;
+    TextView logoslogan2, logoslogan3, skip;
     Button SignUpButton2, LoginButton2;
 
     @Override
@@ -27,21 +27,22 @@ public class Welcome extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.second_splashscreen);
 
-        topanim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
-        bottomanim =  AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
+        topanimwelcome = AnimationUtils.loadAnimation(this, R.anim.top_animation_newsplashscreen);
+        bottomanimwelcome =  AnimationUtils.loadAnimation(this, R.anim.bottom_animation_newsplashscreen);
 
         logoimage2 = findViewById(R.id.logoimage2);
         logoslogan2 = findViewById(R.id.logoslogan2);
         logoslogan3 = findViewById(R.id.logoslogan3);
         SignUpButton2 = findViewById(R.id.SignUpButton2);
         LoginButton2 = findViewById(R.id.LoginButton2);
+        skip = findViewById(R.id.skip);
 
 
-        logoimage2.setAnimation(topanim);
-        logoslogan2.setAnimation(bottomanim);
-        logoslogan3.setAnimation(bottomanim);
-        SignUpButton2.setAnimation(bottomanim);
-        LoginButton2.setAnimation(bottomanim);
+        logoimage2.setAnimation(topanimwelcome);
+        logoslogan2.setAnimation(bottomanimwelcome);
+        logoslogan3.setAnimation(bottomanimwelcome);
+        SignUpButton2.setAnimation(bottomanimwelcome);
+        LoginButton2.setAnimation(bottomanimwelcome);
 
 
         SignUpButton2.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +57,14 @@ public class Welcome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Welcome.this, Login.class);
+                startActivity(intent);
+            }
+        });
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Welcome.this, MainActivity.class);
                 startActivity(intent);
             }
         });
