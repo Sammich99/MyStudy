@@ -113,7 +113,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_marginEnd="16dp"
                                 android:src="@drawable/ic_round_search_24"
-                                app:tint="@color/blue_200" />
+                                app:tint="@color/gray_300" />
                         </RelativeLayout>
 
                     </com.google.android.material.card.MaterialCardView>
