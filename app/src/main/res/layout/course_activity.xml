@@ -43,20 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/noteRecyclerView"
-        android:layout_width="375dp"
-        android:layout_height="383dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="84dp"
-        android:clipToPadding="false"
-        android:paddingStart="0dp"
-        android:paddingEnd="@dimen/_15sdp"
-        android:paddingBottom="@dimen/_15sdp"
-        app:layout_constraintBottom_toTopOf="@+id/layoutQuickActions"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
+    <!-- <LinearLayout
         android:id="@+id/layoutQuickActions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -93,20 +80,35 @@
             android:src="@drawable/ic_attach_file"
             app:tint="@color/blue_050" />
 
-    </LinearLayout>
+    </LinearLayout> -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/noteRecyclerView"
+        android:layout_width="375dp"
+        android:layout_height="383dp"
+        android:layout_marginStart="16dp"
+        android:clipToPadding="false"
+        android:paddingStart="0dp"
+        android:paddingEnd="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_15sdp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.563" />
 
     <ImageView
         android:id="@+id/createNote"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="69dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="28dp"
         android:background="@drawable/background_add_button"
         android:contentDescription="@string/app_name"
         android:padding="@dimen/_5sdp"
         android:src="@drawable/ic_add"
-        app:layout_constraintBottom_toBottomOf="@+id/layoutQuickActions"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toStartOf="parent"
         app:tint="@color/blue_050" />
 
